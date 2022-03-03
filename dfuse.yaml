@@ -1,0 +1,25 @@
+start:
+  args:
+  - abicodec
+  - apiproxy
+  - blockmeta
+  - booter
+  - dashboard
+  - dgraphql
+  - eosq
+  - eosws
+  - merger
+  - mindreader
+  - node-manager
+  - relayer
+  - search-archive
+  - search-forkresolver
+  - search-indexer
+  - search-live
+  - search-router
+  - statedb
+  - tokenmeta
+  - trxdb-loader
+  flags:
+    mindreader-log-to-zap: false
+    apiproxy-http-listen-addr: :8080

@@ -1,0 +1,1237 @@
+# Copyright 2019 dfuse Platform Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+keys:
+  boot: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3   # EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+  user: 5JUzsJi7rARZy2rT5eHhcdUKTyVPvaksnEKtNWzyiBbifJA1dUW   # EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+
+contents:
+  # this contract is required only to setup protocol features
+  - name: eosio.system.1.8.3.abi
+    url: https://github.com/dfuse-io/eosio.contracts/releases/download/v1.8.3/eosio.system-1.8.3.abi
+  - name: eosio.system.1.8.3.wasm
+    url: https://github.com/dfuse-io/eosio.contracts/releases/download/v1.8.3/eosio.system-1.8.3.wasm
+
+  - name: eosio.system.abi
+    url: file:///data/contracts/eosio.system.abi
+  - name: eosio.system.wasm
+    url: file:///data/contracts/eosio.system.wasm
+
+  - name: eosio.msig.abi
+    url: file:///data/contracts/eosio.msig.abi
+  - name: eosio.msig.wasm
+    url: file:///data/contracts/eosio.msig.wasm
+
+  - name: eosio.token.abi
+    url: file:///data/contracts/eosio.token.abi
+  - name: eosio.token.wasm
+    url: file:///data/contracts/eosio.token.wasm
+
+  - name: eosio.freeze.abi
+    url: file:///data/contracts/eosio.freeze.abi
+  - name: eosio.freeze.wasm
+    url: file:///data/contracts/eosio.freeze.wasm
+
+  - name: eosio.info.abi
+    url: file:///data/contracts/eosio.info.abi
+  - name: eosio.info.wasm
+    url: file:///data/contracts/eosio.info.wasm
+
+  - name: eosio.wrap.abi
+    url: file:///data/contracts/eosio.wrap.abi
+  - name: eosio.wrap.wasm
+    url: file:///data/contracts/eosio.wrap.wasm
+
+  - name: dfuseiohooks.abi
+    url: https://github.com/dfuse-io/dfuseiohooks/releases/download/1.0.0/dfuseiohooks.abi
+
+################################# BOOT SEQUENCE ###################################
+boot_sequence:
+  # creating system accounts
+  - op: system.newaccount
+    label: Create account eosio.bpay (fund per-block bucket)
+    data:
+      creator: eosio
+      new_account: eosio.bpay
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.msig (on-chain multi-signature helper)
+    data:
+      creator: eosio
+      new_account: eosio.msig
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.names (where bidname revenues go)
+    data:
+      creator: eosio
+      new_account: eosio.names
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.ram (where buyram proceeds go)
+    data:
+      creator: eosio
+      new_account: eosio.ram
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.ramfee (where buyram fees go)
+    data:
+      creator: eosio
+      new_account: eosio.ramfee
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.saving (unallocated inflation)
+    data:
+      creator: eosio
+      new_account: eosio.saving
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.stake (where delegated stakes go)
+    data:
+      creator: eosio
+      new_account: eosio.stake
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.token (main multi-currency contract, including UTX)
+    data:
+      creator: eosio
+      new_account: eosio.token
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.token (main multi-currency contract, including UTX)
+    data:
+      creator: eosio
+      new_account: eosio.token2
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.vpay (fund per-vote bucket)
+    data:
+      creator: eosio
+      new_account: eosio.vpay
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.rex
+    data:
+      creator: eosio
+      new_account: eosio.rex
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio2
+    data:
+      creator: eosio
+      new_account: eosio2
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio3
+    data:
+      creator: eosio
+      new_account: eosio3
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.freeze
+    data:
+      creator: eosio
+      new_account: eosio.freeze
+      pubkey: boot
+
+  - op: system.newaccount
+    label: Create account eosio.info
+    data:
+      creator: eosio
+      new_account: eosio.info
+      pubkey: boot
+
+  # install system contracts
+  - op: system.setcode
+    label: Setting eosio.msig code for account eosio.msig
+    data:
+      account: eosio.msig
+      contract_name_ref: eosio.msig
+
+  - op: system.setcode
+    label: Setting eosio.token code for account eosio.token
+    data:
+      account: eosio.token
+      contract_name_ref: eosio.token
+
+  - op: system.setcode
+    label: Setting eosio.token code for account eosio.token
+    data:
+      account: eosio.token2
+      contract_name_ref: eosio.token
+
+  # install ux system contracts
+  - op: system.setcode
+    label: Setting eosio.freeze code for account eosio.freeze
+    data:
+      account: eosio.freeze
+      contract_name_ref: eosio.freeze
+
+  - op: system.setcode
+    label: Setting eosio.info code for account eosio.info
+    data:
+      account: eosio.info
+      contract_name_ref: eosio.info
+
+  # create tokens
+  - op: token.create
+    label: Creating the UTX currency symbol
+    data:
+      account: eosio
+      amount: 2500000000.0000 UTX  # Should work with 5% inflation, for the next 50 years (end of uint32 block_num anyway)
+
+  - op: token.create
+    label: Creating the UTXRAM currency symbol
+    data:
+      account: eosio
+      amount: 8000000.0000 UTXRAM
+
+  - op: token.issue
+    label: Issuing initial UTX monetary base
+    data:
+      account: eosio
+      amount: 1000000000.0000 UTX  # 1B coins, as per distribution model + gift of RAM to new users.
+      memo: Creation of UTX
+
+  - op: token.issue
+    label: Issuing initial UTXRAM monetary base
+    data:
+      account: eosio
+      amount: 800000.0000 UTXRAM
+      memo: Creation of UTXRAM
+
+  # set system contract
+  - op: system.enable_protocol_features
+    label: Enabling chain protocol eatures
+
+  - op: system.setcode
+    label: Setting eosio account contract to eosio.system 1.8.3
+    data:
+      account: eosio
+      contract_name_ref: eosio.system.1.8.3
+
+  - op: system.activate_protocol_features
+    label: Activated specific protocol feature
+    data:
+      features:
+        - GET_SENDER
+        - FORWARD_SETCODE
+        - ONLY_BILL_FIRST_AUTHORIZER
+        - RESTRICT_ACTION_TO_SELF
+        - DISALLOW_EMPTY_PRODUCER_SCHEDULE
+        - FIX_LINKAUTH_RESTRICTION
+        - REPLACE_DEFERRED
+        - NO_DUPLICATE_DEFERRED_ID
+        - ONLY_LINK_TO_EXISTING_PERMISSION
+        - RAM_RESTRICTIONS
+        - WEBAUTHN_KEY
+        - WTMSIG_BLOCK_SIGNATURES
+
+  - op: system.setpriv
+    label: Setting privileged account for eosio.msig
+    data:
+      account: eosio.msig
+
+  - op: sleep
+    label: Wait for protocol feature to correcty activate
+    data:
+      duration: 2s
+
+  - op: system.setcode
+    label: Setting eosio account from eosio.bios contract to eosio.system
+    data:
+      account: eosio
+      contract_name_ref: eosio.system
+
+  - op: sleep
+    label: Wait for protocol feature to correcty activate
+    data:
+      duration: 2s
+
+  # init system contract
+  - op: system.init
+    label: Initializing Chain
+    data:
+      version: 0
+      core: 4,UTX
+
+  # transfer tokens
+  - op: token.transfer
+    label: Transfer Token
+    data:
+      from: eosio
+      to: eosio2
+      quantity: 100.0000 UTX
+      memo: fund account eosio2
+
+  - op: system.pushtransaction
+    label: Creating a custom transaction
+    data:
+      contract: eosio.token
+      action: transfer
+      payload:
+        from: eosio
+        to: eosio3
+        quantity: 100.0000 UTX
+        memo: fund account eosio3
+      actor: eosio
+      permission: active
+
+  - op: system.newaccount
+    label: Create account dfuseiohooks
+    data:
+      creator: eosio
+      new_account: dfuseiohooks
+      pubkey: boot
+      ram_bytes: 40960
+
+  # create user accounts
+  - op: system.newaccount
+    label: Create account tester1
+    data:
+      creator: eosio
+      new_account: tester1
+      pubkey: user
+      ram_bytes: 20480
+
+  - op: system.newaccount
+    label: Create account tester2
+    data:
+      creator: eosio
+      new_account: tester2
+      pubkey: user
+      ram_bytes: 20480
+
+  # create bp accounts
+  - op: system.newaccount
+    label: Create account bpa
+    data:
+      creator: eosio
+      new_account: bpa
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpb
+    data:
+      creator: eosio
+      new_account: bpb
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpc
+    data:
+      creator: eosio
+      new_account: bpc
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpd
+    data:
+      creator: eosio
+      new_account: bpd
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpe
+    data:
+      creator: eosio
+      new_account: bpe
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpf
+    data:
+      creator: eosio
+      new_account: bpf
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpg
+    data:
+      creator: eosio
+      new_account: bpg
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bph
+    data:
+      creator: eosio
+      new_account: bph
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpi
+    data:
+      creator: eosio
+      new_account: bpi
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpj
+    data:
+      creator: eosio
+      new_account: bpj
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpk
+    data:
+      creator: eosio
+      new_account: bpk
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpl
+    data:
+      creator: eosio
+      new_account: bpl
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpm
+    data:
+      creator: eosio
+      new_account: bpm
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpn
+    data:
+      creator: eosio
+      new_account: bpn
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpo
+    data:
+      creator: eosio
+      new_account: bpo
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpp
+    data:
+      creator: eosio
+      new_account: bpp
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpq
+    data:
+      creator: eosio
+      new_account: bpq
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpr
+    data:
+      creator: eosio
+      new_account: bpr
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bps
+    data:
+      creator: eosio
+      new_account: bps
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpt
+    data:
+      creator: eosio
+      new_account: bpt
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpu
+    data:
+      creator: eosio
+      new_account: bpu
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpv
+    data:
+      creator: eosio
+      new_account: bpv
+      pubkey: boot
+      ram_bytes: 8192
+
+  - op: system.newaccount
+    label: Create account bpw
+    data:
+      creator: eosio
+      new_account: bpw
+      pubkey: boot
+      ram_bytes: 8192
+
+  # stake bp accounts
+  - op: system.pushtransaction
+    label: Buyram for eosio account
+    data:
+      contract: eosio
+      action: buyram
+      payload:
+        payer: eosio
+        receiver: eosio
+        quant: 100000.0000 UTXRAM
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to eosio
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: eosio
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: false
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 150M tokens to bpa
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpa
+        stake_net_quantity: 75000000.0000 UTX
+        stake_cpu_quantity: 75000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpb
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpb
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpc
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpc
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpd
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpd
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpe
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpe
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpf
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpf
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpg
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpg
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bph
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bph
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpi
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpi
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpj
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpj
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpk
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpk
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpl
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpl
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpm
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpm
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpn
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpn
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpo
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpo
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpp
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpp
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpq
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpq
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpr
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpr
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bps
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bps
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpt
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpt
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpu
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpu
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpv
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpv
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to bpw
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: bpw
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  # # register bp accounts
+  - op: system.pushtransaction
+    label: Register producer bpa
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpa
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpa
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpb
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpb
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpb
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpc
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpc
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpc
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpd
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpd
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpd
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpe
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpe
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpe
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpf
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpf
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpf
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpg
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpg
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpg
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bph
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bph
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bph
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpi
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpi
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpi
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpj
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpj
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpj
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpk
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpk
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpk
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpl
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpl
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpl
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpm
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpm
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpm
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpn
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpn
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpn
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpo
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpo
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpo
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpp
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpp
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpp
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpq
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpq
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpq
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpr
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpr
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpr
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bps
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bps
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bps
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpt
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpt
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpt
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpu
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpu
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpu
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpv
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpv
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpv
+      permission: active
+
+  - op: system.pushtransaction
+    label: Register producer bpw
+    data:
+      contract: eosio
+      action: regproducer
+      payload:
+        producer: bpw
+        producer_key: EOS6CRG7tXc9u2ySGqkH69JrwG4yXojkZBVUMLgUnKfM6uJpDUtKy
+        url: somewebsite
+        location: 0
+      actor: bpw
+      permission: active
+
+  # vote for bps
+  - op: system.pushtransaction
+    label: Vote producers with eosio
+    data:
+      contract: eosio
+      action: voteproducer
+      payload:
+        voter: bpa
+        proxy: ""
+        producers: ["bpa","bpb","bpc","bpd","bpe","bpf","bpg","bph","bpi","bpj","bpk","bpl","bpm","bpn","bpo","bpp","bpq","bpr","bps","bpt","bpu","bpv","bpw"]
+      actor: bpa
+      permission: active
+
+  - op: system.pushtransaction
+    label: Vote producers with eosio
+    data:
+      contract: eosio
+      action: voteproducer
+      payload:
+        voter: bpb
+        proxy: ""
+        producers: ["bpa","bpb","bpc","bpd","bpe","bpf","bpg","bph","bpi","bpj","bpk","bpl","bpm","bpn","bpo","bpp","bpq","bpr","bps","bpt","bpu","bpv","bpw"]
+      actor: bpb
+      permission: active
+
+  - op: system.pushtransaction
+    label: Vote producers with eosio
+    data:
+      contract: eosio
+      action: voteproducer
+      payload:
+        voter: bpc
+        proxy: ""
+        producers: ["bpa","bpb","bpc","bpd","bpe","bpf","bpg","bph","bpi","bpj","bpk","bpl","bpm","bpn","bpo","bpp","bpq","bpr","bps","bpt","bpu","bpv","bpw"]
+      actor: bpc
+      permission: active
+
+  # transfer tokens to user accounts
+  - op: token.transfer
+    label: Transfer Token to tester1
+    data:
+      from: eosio
+      to: tester1
+      quantity: 100.0000 UTX
+      memo: fund account tester1
+
+  - op: token.transfer
+    label: Transfer Token to tester2
+    data:
+      from: eosio
+      to: tester2
+      quantity: 100.0000 UTX
+      memo: fund account tester2
+
+  - op: system.setabi
+    label: Setting ABI on dfuseiohooks
+    data:
+      account: dfuseiohooks
+      contract_name_ref: dfuseiohooks
+
+  # resign system accounts
+  - op: system.resign_accounts
+    label: Disabling authorization for system accounts, pointing `eosio` to the `eosio.prods` account.
+    data:
+      accounts:
+        #- eosio
+        - eosio.msig
+        - eosio.token
+        - eosio.ram
+        - eosio.ramfee
+        - eosio.stake
+        - eosio.names
+        - eosio.saving
+        - eosio.bpay
+        - eosio.vpay
+        - eosio.freeze
