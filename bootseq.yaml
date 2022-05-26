@@ -53,6 +53,11 @@ contents:
   - name: eosio.wrap.wasm
     url: file:///data/contracts/eosio.wrap.wasm
 
+  - name: simpleassets.abi
+    url: file:///data/contracts/simpleassets.abi
+  - name: simpleassets.wasm
+    url: file:///data/contracts/simpleassets.wasm
+
   - name: dfuseiohooks.abi
     url: https://github.com/dfuse-io/dfuseiohooks/releases/download/1.0.0/dfuseiohooks.abi
 
@@ -316,6 +321,12 @@ boot_sequence:
       new_account: simpleassets
       pubkey: user
       ram_bytes: 819200
+
+  - op: system.setcode
+    label: Setting simpleassets code for account simpleassets
+    data:
+      account: simpleassets
+      contract_name_ref: simpleassets
 
   - op: system.newaccount
     label: Create account tester1
