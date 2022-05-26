@@ -319,7 +319,7 @@ boot_sequence:
     data:
       creator: eosio
       new_account: simpleassets
-      pubkey: user
+      pubkey: boot
       ram_bytes: 819200
 
   - op: system.setcode
