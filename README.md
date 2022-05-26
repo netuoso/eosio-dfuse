@@ -18,3 +18,6 @@ This repository contains a collection of scripts, contracts, and configs necessa
 ### Notes
 - this process uses ports 8080, 8081, and 8888 on the host computer
 	- change them to your custom values in [run.sh](run.sh) if necessary
+- keys used in development (DO NOT USE THESE KEYS IN PRODUCTION)
+  - system: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+  - user: 5JUzsJi7rARZy2rT5eHhcdUKTyVPvaksnEKtNWzyiBbifJA1dUW
