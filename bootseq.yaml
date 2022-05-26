@@ -310,6 +310,14 @@ boot_sequence:
 
   # create user accounts
   - op: system.newaccount
+    label: Create account simpleassets
+    data:
+      creator: eosio
+      new_account: simpleassets
+      pubkey: user
+      ram_bytes: 819200
+
+  - op: system.newaccount
     label: Create account tester1
     data:
       creator: eosio
@@ -538,15 +546,15 @@ boot_sequence:
       permission: active
 
   - op: system.pushtransaction
-    label: Stake 150M tokens to bpa
+    label: Stake 10M tokens to bpa
     data:
       contract: eosio
       action: delegatebw
       payload:
         from: eosio
         receiver: bpa
-        stake_net_quantity: 75000000.0000 UTX
-        stake_cpu_quantity: 75000000.0000 UTX
+        stake_net_quantity: 5000000.0000 UTX
+        stake_cpu_quantity: 5000000.0000 UTX
         transfer: true
       actor: eosio
       permission: active
@@ -1202,7 +1210,7 @@ boot_sequence:
     data:
       from: eosio
       to: tester1
-      quantity: 100.0000 UTX
+      quantity: 100000.0000 UTX
       memo: fund account tester1
 
   - op: token.transfer
@@ -1210,11 +1218,25 @@ boot_sequence:
     data:
       from: eosio
       to: tester2
-      quantity: 100.0000 UTX
+      quantity: 100000.0000 UTX
       memo: fund account tester2
 
   - op: system.pushtransaction
-    label: Stake 10M tokens to eosio
+    label: Stake 10M tokens to simpleassets
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: simpleassets
+        stake_net_quantity: 100000.0000 UTX
+        stake_cpu_quantity: 100000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to tester1
     data:
       contract: eosio
       action: delegatebw
@@ -1223,12 +1245,12 @@ boot_sequence:
         receiver: tester1
         stake_net_quantity: 100000.0000 UTX
         stake_cpu_quantity: 100000.0000 UTX
-        transfer: false
+        transfer: true
       actor: eosio
       permission: active
 
   - op: system.pushtransaction
-    label: Stake 10M tokens to eosio
+    label: Stake 10M tokens to tester2
     data:
       contract: eosio
       action: delegatebw
@@ -1237,7 +1259,7 @@ boot_sequence:
         receiver: tester2
         stake_net_quantity: 100000.0000 UTX
         stake_cpu_quantity: 100000.0000 UTX
-        transfer: false
+        transfer: true
       actor: eosio
       permission: active
 
