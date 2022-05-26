@@ -546,15 +546,15 @@ boot_sequence:
       permission: active
 
   - op: system.pushtransaction
-    label: Stake 10M tokens to bpa
+    label: Stake 150M tokens to bpa
     data:
       contract: eosio
       action: delegatebw
       payload:
         from: eosio
         receiver: bpa
-        stake_net_quantity: 5000000.0000 UTX
-        stake_cpu_quantity: 5000000.0000 UTX
+        stake_net_quantity: 75000000.0000 UTX
+        stake_cpu_quantity: 75000000.0000 UTX
         transfer: true
       actor: eosio
       permission: active
