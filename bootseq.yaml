@@ -313,6 +313,11 @@ boot_sequence:
       pubkey: boot
       ram_bytes: 40960
 
+  - op: sleep
+    label: Split transactions into new blocks
+    data:
+      duration: 2s
+
   # create user accounts
   - op: system.newaccount
     label: Create account simpleassets
@@ -327,6 +332,11 @@ boot_sequence:
     data:
       account: simpleassets
       contract_name_ref: simpleassets
+
+  - op: sleep
+    label: Split transactions into new blocks
+    data:
+      duration: 2s
 
   - op: system.newaccount
     label: Create account tester1
