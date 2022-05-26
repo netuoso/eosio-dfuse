@@ -320,7 +320,7 @@ boot_sequence:
       creator: eosio
       new_account: simpleassets
       pubkey: boot
-      ram_bytes: 819200
+      ram_bytes: 4096000
 
   - op: system.setcode
     label: Setting simpleassets code for account simpleassets
