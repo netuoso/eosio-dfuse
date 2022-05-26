@@ -315,7 +315,7 @@ boot_sequence:
       creator: eosio
       new_account: tester1
       pubkey: user
-      ram_bytes: 20480
+      ram_bytes: 819200
 
   - op: system.newaccount
     label: Create account tester2
@@ -323,7 +323,7 @@ boot_sequence:
       creator: eosio
       new_account: tester2
       pubkey: user
-      ram_bytes: 20480
+      ram_bytes: 819200
 
   # create bp accounts
   - op: system.newaccount
@@ -1212,6 +1212,34 @@ boot_sequence:
       to: tester2
       quantity: 100.0000 UTX
       memo: fund account tester2
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to eosio
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: tester1
+        stake_net_quantity: 100000.0000 UTX
+        stake_cpu_quantity: 100000.0000 UTX
+        transfer: false
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to eosio
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: tester2
+        stake_net_quantity: 100000.0000 UTX
+        stake_cpu_quantity: 100000.0000 UTX
+        transfer: false
+      actor: eosio
+      permission: active
 
   - op: system.setabi
     label: Setting ABI on dfuseiohooks
