@@ -21,5 +21,9 @@ This repository contains a collection of scripts, contracts, and configs necessa
 - keys used in development (DO NOT USE THESE KEYS IN PRODUCTION)
   - system: 5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
   - user: 5JUzsJi7rARZy2rT5eHhcdUKTyVPvaksnEKtNWzyiBbifJA1dUW
-- if you intend to use `simpleassets` contract, you need to add eosio.code permisison
+- to use `simpleassets` contract, you need to add eosio.code permisison
   - cleos set account permission simpleassets active --add-code
+- to use `atomicassets` contract, you need to add eosio.code permisison
+  - cleos set account permission assets.alure active --add-code
+- to use `atomicmarket` contract, you need to add eosio.code permisison
+  - cleos set account permission market.alure active --add-code

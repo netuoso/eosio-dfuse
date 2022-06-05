@@ -58,6 +58,16 @@ contents:
   - name: simpleassets.wasm
     url: file:///data/contracts/simpleassets.wasm
 
+  - name: atomicassets.abi
+    url: file:///data/contracts/atomicassets.abi
+  - name: atomicassets.wasm
+    url: file:///data/contracts/atomicassets.wasm
+
+  - name: atomicmarket.abi
+    url: file:///data/contracts/atomicmarket.abi
+  - name: atomicmarket.wasm
+    url: file:///data/contracts/atomicmarket.wasm
+
   - name: dfuseiohooks.abi
     url: https://github.com/dfuse-io/dfuseiohooks/releases/download/1.0.0/dfuseiohooks.abi
 
@@ -327,11 +337,39 @@ boot_sequence:
       pubkey: boot
       ram_bytes: 4096000
 
+  - op: system.newaccount
+    label: Create account assets.alure
+    data:
+      creator: eosio
+      new_account: assets.alure
+      pubkey: boot
+      ram_bytes: 4096000
+
+  - op: system.newaccount
+    label: Create account market.alure
+    data:
+      creator: eosio
+      new_account: market.alure
+      pubkey: boot
+      ram_bytes: 4096000
+
   - op: system.setcode
     label: Setting simpleassets code for account simpleassets
     data:
       account: simpleassets
       contract_name_ref: simpleassets
+
+  - op: system.setcode
+    label: Setting assets.alure code for account assets.alure
+    data:
+      account: assets.alure
+      contract_name_ref: atomicassets
+
+  - op: system.setcode
+    label: Setting market.alure code for account market.alure
+    data:
+      account: market.alure
+      contract_name_ref: atomicmarket
 
   - op: sleep
     label: Split transactions into new blocks
@@ -1250,6 +1288,34 @@ boot_sequence:
       payload:
         from: eosio
         receiver: simpleassets
+        stake_net_quantity: 100000.0000 UTX
+        stake_cpu_quantity: 100000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to assets.alure
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: assets.alure
+        stake_net_quantity: 100000.0000 UTX
+        stake_cpu_quantity: 100000.0000 UTX
+        transfer: true
+      actor: eosio
+      permission: active
+
+  - op: system.pushtransaction
+    label: Stake 10M tokens to market.alure
+    data:
+      contract: eosio
+      action: delegatebw
+      payload:
+        from: eosio
+        receiver: market.alure
         stake_net_quantity: 100000.0000 UTX
         stake_cpu_quantity: 100000.0000 UTX
         transfer: true
