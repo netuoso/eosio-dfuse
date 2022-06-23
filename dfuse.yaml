@@ -23,3 +23,4 @@ start:
   flags:
     mindreader-log-to-zap: false
     apiproxy-http-listen-addr: :8080
+    common-exclude-filter-expr: (receiver == "eosio" && action == "onblock")

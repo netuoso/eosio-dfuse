@@ -1,1168 +1,918 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
-    "version": "eosio::abi/1.2",
-    "types": [],
-    "structs": [
-        {
-            "name": "COUNTER_RANGE",
-            "base": "",
-            "fields": [
-                {
-                    "name": "counter_name",
-                    "type": "name"
-                },
-                {
-                    "name": "start_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "end_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "SYMBOLPAIR",
-            "base": "",
-            "fields": [
-                {
-                    "name": "listing_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "settlement_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "delphi_pair_name",
-                    "type": "name"
-                },
-                {
-                    "name": "invert_delphi_pair",
-                    "type": "bool"
-                }
-            ]
-        },
-        {
-            "name": "TOKEN",
-            "base": "",
-            "fields": [
-                {
-                    "name": "token_contract",
-                    "type": "name"
-                },
-                {
-                    "name": "token_symbol",
-                    "type": "symbol"
-                }
-            ]
-        },
-        {
-            "name": "acceptbuyo",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "expected_asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "expected_price",
-                    "type": "asset"
-                },
-                {
-                    "name": "taker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "addafeectr",
-            "base": "",
-            "fields": [
-                {
-                    "name": "bonusfee_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "counter_name_to_add",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "addbonusfee",
-            "base": "",
-            "fields": [
-                {
-                    "name": "fee_recipient",
-                    "type": "name"
-                },
-                {
-                    "name": "fee",
-                    "type": "float64"
-                },
-                {
-                    "name": "applicable_counter_names",
-                    "type": "name[]"
-                },
-                {
-                    "name": "fee_name",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "addconftoken",
-            "base": "",
-            "fields": [
-                {
-                    "name": "token_contract",
-                    "type": "name"
-                },
-                {
-                    "name": "token_symbol",
-                    "type": "symbol"
-                }
-            ]
-        },
-        {
-            "name": "adddelphi",
-            "base": "",
-            "fields": [
-                {
-                    "name": "delphi_pair_name",
-                    "type": "name"
-                },
-                {
-                    "name": "invert_delphi_pair",
-                    "type": "bool"
-                },
-                {
-                    "name": "listing_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "settlement_symbol",
-                    "type": "symbol"
-                }
-            ]
-        },
-        {
-            "name": "announceauct",
-            "base": "",
-            "fields": [
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "starting_bid",
-                    "type": "asset"
-                },
-                {
-                    "name": "duration",
-                    "type": "uint32"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "announcesale",
-            "base": "",
-            "fields": [
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "listing_price",
-                    "type": "asset"
-                },
-                {
-                    "name": "settlement_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "assertauct",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "asset_ids_to_assert",
-                    "type": "uint64[]"
-                }
-            ]
-        },
-        {
-            "name": "assertsale",
-            "base": "",
-            "fields": [
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "asset_ids_to_assert",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "listing_price_to_assert",
-                    "type": "asset"
-                },
-                {
-                    "name": "settlement_symbol_to_assert",
-                    "type": "symbol"
-                }
-            ]
-        },
-        {
-            "name": "auctclaimbuy",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "auctclaimsel",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "auctionbid",
-            "base": "",
-            "fields": [
-                {
-                    "name": "bidder",
-                    "type": "name"
-                },
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "bid",
-                    "type": "asset"
-                },
-                {
-                    "name": "taker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "auctions_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "end_time",
-                    "type": "uint32"
-                },
-                {
-                    "name": "assets_transferred",
-                    "type": "bool"
-                },
-                {
-                    "name": "current_bid",
-                    "type": "asset"
-                },
-                {
-                    "name": "current_bidder",
-                    "type": "name"
-                },
-                {
-                    "name": "claimed_by_seller",
-                    "type": "bool"
-                },
-                {
-                    "name": "claimed_by_buyer",
-                    "type": "bool"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "taker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "balances_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "owner",
-                    "type": "name"
-                },
-                {
-                    "name": "quantities",
-                    "type": "asset[]"
-                }
-            ]
-        },
-        {
-            "name": "bonusfees_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "bonusfee_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "fee_recipient",
-                    "type": "name"
-                },
-                {
-                    "name": "fee",
-                    "type": "float64"
-                },
-                {
-                    "name": "counter_ranges",
-                    "type": "COUNTER_RANGE[]"
-                },
-                {
-                    "name": "fee_name",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "buyoffers_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "buyer",
-                    "type": "name"
-                },
-                {
-                    "name": "recipient",
-                    "type": "name"
-                },
-                {
-                    "name": "price",
-                    "type": "asset"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "memo",
-                    "type": "string"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "cancelauct",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "cancelbuyo",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "cancelsale",
-            "base": "",
-            "fields": [
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "config_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "version",
-                    "type": "string"
-                },
-                {
-                    "name": "sale_counter",
-                    "type": "uint64"
-                },
-                {
-                    "name": "auction_counter",
-                    "type": "uint64"
-                },
-                {
-                    "name": "minimum_bid_increase",
-                    "type": "float64"
-                },
-                {
-                    "name": "minimum_auction_duration",
-                    "type": "uint32"
-                },
-                {
-                    "name": "maximum_auction_duration",
-                    "type": "uint32"
-                },
-                {
-                    "name": "auction_reset_duration",
-                    "type": "uint32"
-                },
-                {
-                    "name": "supported_tokens",
-                    "type": "TOKEN[]"
-                },
-                {
-                    "name": "supported_symbol_pairs",
-                    "type": "SYMBOLPAIR[]"
-                },
-                {
-                    "name": "maker_market_fee",
-                    "type": "float64"
-                },
-                {
-                    "name": "taker_market_fee",
-                    "type": "float64"
-                },
-                {
-                    "name": "atomicassets_account",
-                    "type": "name"
-                },
-                {
-                    "name": "delphioracle_account",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "convcounters",
-            "base": "",
-            "fields": []
-        },
-        {
-            "name": "counters_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "counter_name",
-                    "type": "name"
-                },
-                {
-                    "name": "counter_value",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "createbuyo",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyer",
-                    "type": "name"
-                },
-                {
-                    "name": "recipient",
-                    "type": "name"
-                },
-                {
-                    "name": "price",
-                    "type": "asset"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "memo",
-                    "type": "string"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "declinebuyo",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "decline_memo",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "delbonusfee",
-            "base": "",
-            "fields": [
-                {
-                    "name": "bonusfee_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "init",
-            "base": "",
-            "fields": []
-        },
-        {
-            "name": "logauctstart",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "lognewauct",
-            "base": "",
-            "fields": [
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "starting_bid",
-                    "type": "asset"
-                },
-                {
-                    "name": "duration",
-                    "type": "uint32"
-                },
-                {
-                    "name": "end_time",
-                    "type": "uint32"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "lognewbuyo",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "buyer",
-                    "type": "name"
-                },
-                {
-                    "name": "recipient",
-                    "type": "name"
-                },
-                {
-                    "name": "price",
-                    "type": "asset"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "memo",
-                    "type": "string"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "lognewsale",
-            "base": "",
-            "fields": [
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "listing_price",
-                    "type": "asset"
-                },
-                {
-                    "name": "settlement_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "logsalestart",
-            "base": "",
-            "fields": [
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "offer_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "marketplaces_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "marketplace_name",
-                    "type": "name"
-                },
-                {
-                    "name": "creator",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "payauctram",
-            "base": "",
-            "fields": [
-                {
-                    "name": "payer",
-                    "type": "name"
-                },
-                {
-                    "name": "auction_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "paybuyoram",
-            "base": "",
-            "fields": [
-                {
-                    "name": "payer",
-                    "type": "name"
-                },
-                {
-                    "name": "buyoffer_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "paysaleram",
-            "base": "",
-            "fields": [
-                {
-                    "name": "payer",
-                    "type": "name"
-                },
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "purchasesale",
-            "base": "",
-            "fields": [
-                {
-                    "name": "buyer",
-                    "type": "name"
-                },
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "intended_delphi_median",
-                    "type": "uint64"
-                },
-                {
-                    "name": "taker_marketplace",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "regmarket",
-            "base": "",
-            "fields": [
-                {
-                    "name": "creator",
-                    "type": "name"
-                },
-                {
-                    "name": "marketplace_name",
-                    "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "sales_s",
-            "base": "",
-            "fields": [
-                {
-                    "name": "sale_id",
-                    "type": "uint64"
-                },
-                {
-                    "name": "seller",
-                    "type": "name"
-                },
-                {
-                    "name": "asset_ids",
-                    "type": "uint64[]"
-                },
-                {
-                    "name": "offer_id",
-                    "type": "int64"
-                },
-                {
-                    "name": "listing_price",
-                    "type": "asset"
-                },
-                {
-                    "name": "settlement_symbol",
-                    "type": "symbol"
-                },
-                {
-                    "name": "maker_marketplace",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_name",
-                    "type": "name"
-                },
-                {
-                    "name": "collection_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "setmarketfee",
-            "base": "",
-            "fields": [
-                {
-                    "name": "maker_market_fee",
-                    "type": "float64"
-                },
-                {
-                    "name": "taker_market_fee",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "setminbidinc",
-            "base": "",
-            "fields": [
-                {
-                    "name": "minimum_bid_increase",
-                    "type": "float64"
-                }
-            ]
-        },
-        {
-            "name": "setversion",
-            "base": "",
-            "fields": [
-                {
-                    "name": "new_version",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "stopbonusfee",
-            "base": "",
-            "fields": [
-                {
-                    "name": "bonusfee_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "withdraw",
-            "base": "",
-            "fields": [
-                {
-                    "name": "owner",
-                    "type": "name"
-                },
-                {
-                    "name": "token_to_withdraw",
-                    "type": "asset"
-                }
-            ]
+  "version": "eosio::abi/1.1",
+  "types": [],
+  "structs": [{
+      "name": "COUNTER_RANGE",
+      "base": "",
+      "fields": [{
+          "name": "counter_name",
+          "type": "name"
+        },{
+          "name": "start_id",
+          "type": "uint64"
+        },{
+          "name": "end_id",
+          "type": "uint64"
         }
-    ],
-    "actions": [
-        {
-            "name": "acceptbuyo",
-            "type": "acceptbuyo",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "addafeectr",
-            "type": "addafeectr",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "addbonusfee",
-            "type": "addbonusfee",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "addconftoken",
-            "type": "addconftoken",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "adddelphi",
-            "type": "adddelphi",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "announceauct",
-            "type": "announceauct",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "announcesale",
-            "type": "announcesale",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "assertauct",
-            "type": "assertauct",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "assertsale",
-            "type": "assertsale",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "auctclaimbuy",
-            "type": "auctclaimbuy",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "auctclaimsel",
-            "type": "auctclaimsel",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "auctionbid",
-            "type": "auctionbid",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "cancelauct",
-            "type": "cancelauct",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "cancelbuyo",
-            "type": "cancelbuyo",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "cancelsale",
-            "type": "cancelsale",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "convcounters",
-            "type": "convcounters",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "createbuyo",
-            "type": "createbuyo",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "declinebuyo",
-            "type": "declinebuyo",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "delbonusfee",
-            "type": "delbonusfee",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "init",
-            "type": "init",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "logauctstart",
-            "type": "logauctstart",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "lognewauct",
-            "type": "lognewauct",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "lognewbuyo",
-            "type": "lognewbuyo",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "lognewsale",
-            "type": "lognewsale",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "logsalestart",
-            "type": "logsalestart",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "payauctram",
-            "type": "payauctram",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "paybuyoram",
-            "type": "paybuyoram",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "paysaleram",
-            "type": "paysaleram",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "purchasesale",
-            "type": "purchasesale",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "regmarket",
-            "type": "regmarket",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "setmarketfee",
-            "type": "setmarketfee",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "setminbidinc",
-            "type": "setminbidinc",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "setversion",
-            "type": "setversion",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "stopbonusfee",
-            "type": "stopbonusfee",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "withdraw",
-            "type": "withdraw",
-            "ricardian_contract": ""
+      ]
+    },{
+      "name": "SYMBOLPAIR",
+      "base": "",
+      "fields": [{
+          "name": "listing_symbol",
+          "type": "symbol"
+        },{
+          "name": "settlement_symbol",
+          "type": "symbol"
+        },{
+          "name": "delphi_pair_name",
+          "type": "name"
+        },{
+          "name": "invert_delphi_pair",
+          "type": "bool"
         }
-    ],
-    "tables": [
-        {
-            "name": "auctions",
-            "type": "auctions_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "balances",
-            "type": "balances_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "bonusfees",
-            "type": "bonusfees_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "buyoffers",
-            "type": "buyoffers_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "config",
-            "type": "config_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "counters",
-            "type": "counters_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "marketplaces",
-            "type": "marketplaces_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "sales",
-            "type": "sales_s",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
+      ]
+    },{
+      "name": "TOKEN",
+      "base": "",
+      "fields": [{
+          "name": "token_contract",
+          "type": "name"
+        },{
+          "name": "token_symbol",
+          "type": "symbol"
         }
-    ],
-    "kv_tables": {},
-    "ricardian_clauses": [],
-    "variants": [],
-    "action_results": []
+      ]
+    },{
+      "name": "acceptbuyo",
+      "base": "",
+      "fields": [{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        },{
+          "name": "expected_asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "expected_price",
+          "type": "asset"
+        },{
+          "name": "taker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "addafeectr",
+      "base": "",
+      "fields": [{
+          "name": "bonusfee_id",
+          "type": "uint64"
+        },{
+          "name": "counter_name_to_add",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "addbonusfee",
+      "base": "",
+      "fields": [{
+          "name": "fee_recipient",
+          "type": "name"
+        },{
+          "name": "fee",
+          "type": "float64"
+        },{
+          "name": "applicable_counter_names",
+          "type": "name[]"
+        },{
+          "name": "fee_name",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "addconftoken",
+      "base": "",
+      "fields": [{
+          "name": "token_contract",
+          "type": "name"
+        },{
+          "name": "token_symbol",
+          "type": "symbol"
+        }
+      ]
+    },{
+      "name": "adddelphi",
+      "base": "",
+      "fields": [{
+          "name": "delphi_pair_name",
+          "type": "name"
+        },{
+          "name": "invert_delphi_pair",
+          "type": "bool"
+        },{
+          "name": "listing_symbol",
+          "type": "symbol"
+        },{
+          "name": "settlement_symbol",
+          "type": "symbol"
+        }
+      ]
+    },{
+      "name": "announceauct",
+      "base": "",
+      "fields": [{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "starting_bid",
+          "type": "asset"
+        },{
+          "name": "duration",
+          "type": "uint32"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "announcesale",
+      "base": "",
+      "fields": [{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "listing_price",
+          "type": "asset"
+        },{
+          "name": "settlement_symbol",
+          "type": "symbol"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "assertauct",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        },{
+          "name": "asset_ids_to_assert",
+          "type": "uint64[]"
+        }
+      ]
+    },{
+      "name": "assertsale",
+      "base": "",
+      "fields": [{
+          "name": "sale_id",
+          "type": "uint64"
+        },{
+          "name": "asset_ids_to_assert",
+          "type": "uint64[]"
+        },{
+          "name": "listing_price_to_assert",
+          "type": "asset"
+        },{
+          "name": "settlement_symbol_to_assert",
+          "type": "symbol"
+        }
+      ]
+    },{
+      "name": "auctclaimbuy",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "auctclaimsel",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "auctionbid",
+      "base": "",
+      "fields": [{
+          "name": "bidder",
+          "type": "name"
+        },{
+          "name": "auction_id",
+          "type": "uint64"
+        },{
+          "name": "bid",
+          "type": "asset"
+        },{
+          "name": "taker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "auctions_s",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        },{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "end_time",
+          "type": "uint32"
+        },{
+          "name": "assets_transferred",
+          "type": "bool"
+        },{
+          "name": "current_bid",
+          "type": "asset"
+        },{
+          "name": "current_bidder",
+          "type": "name"
+        },{
+          "name": "claimed_by_seller",
+          "type": "bool"
+        },{
+          "name": "claimed_by_buyer",
+          "type": "bool"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "taker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "balances_s",
+      "base": "",
+      "fields": [{
+          "name": "owner",
+          "type": "name"
+        },{
+          "name": "quantities",
+          "type": "asset[]"
+        }
+      ]
+    },{
+      "name": "bonusfees_s",
+      "base": "",
+      "fields": [{
+          "name": "bonusfee_id",
+          "type": "uint64"
+        },{
+          "name": "fee_recipient",
+          "type": "name"
+        },{
+          "name": "fee",
+          "type": "float64"
+        },{
+          "name": "counter_ranges",
+          "type": "COUNTER_RANGE[]"
+        },{
+          "name": "fee_name",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "buyoffers_s",
+      "base": "",
+      "fields": [{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        },{
+          "name": "buyer",
+          "type": "name"
+        },{
+          "name": "recipient",
+          "type": "name"
+        },{
+          "name": "price",
+          "type": "asset"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "memo",
+          "type": "string"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "cancelauct",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "cancelbuyo",
+      "base": "",
+      "fields": [{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "cancelsale",
+      "base": "",
+      "fields": [{
+          "name": "sale_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "config_s",
+      "base": "",
+      "fields": [{
+          "name": "version",
+          "type": "string"
+        },{
+          "name": "sale_counter",
+          "type": "uint64"
+        },{
+          "name": "auction_counter",
+          "type": "uint64"
+        },{
+          "name": "minimum_bid_increase",
+          "type": "float64"
+        },{
+          "name": "minimum_auction_duration",
+          "type": "uint32"
+        },{
+          "name": "maximum_auction_duration",
+          "type": "uint32"
+        },{
+          "name": "auction_reset_duration",
+          "type": "uint32"
+        },{
+          "name": "supported_tokens",
+          "type": "TOKEN[]"
+        },{
+          "name": "supported_symbol_pairs",
+          "type": "SYMBOLPAIR[]"
+        },{
+          "name": "maker_market_fee",
+          "type": "float64"
+        },{
+          "name": "taker_market_fee",
+          "type": "float64"
+        },{
+          "name": "atomicassets_account",
+          "type": "name"
+        },{
+          "name": "delphioracle_account",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "convcounters",
+      "base": "",
+      "fields": []
+    },{
+      "name": "counters_s",
+      "base": "",
+      "fields": [{
+          "name": "counter_name",
+          "type": "name"
+        },{
+          "name": "counter_value",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "createbuyo",
+      "base": "",
+      "fields": [{
+          "name": "buyer",
+          "type": "name"
+        },{
+          "name": "recipient",
+          "type": "name"
+        },{
+          "name": "price",
+          "type": "asset"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "memo",
+          "type": "string"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "declinebuyo",
+      "base": "",
+      "fields": [{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        },{
+          "name": "decline_memo",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "delbonusfee",
+      "base": "",
+      "fields": [{
+          "name": "bonusfee_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "init",
+      "base": "",
+      "fields": []
+    },{
+      "name": "logauctstart",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "lognewauct",
+      "base": "",
+      "fields": [{
+          "name": "auction_id",
+          "type": "uint64"
+        },{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "starting_bid",
+          "type": "asset"
+        },{
+          "name": "duration",
+          "type": "uint32"
+        },{
+          "name": "end_time",
+          "type": "uint32"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "lognewbuyo",
+      "base": "",
+      "fields": [{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        },{
+          "name": "buyer",
+          "type": "name"
+        },{
+          "name": "recipient",
+          "type": "name"
+        },{
+          "name": "price",
+          "type": "asset"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "memo",
+          "type": "string"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "lognewsale",
+      "base": "",
+      "fields": [{
+          "name": "sale_id",
+          "type": "uint64"
+        },{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "listing_price",
+          "type": "asset"
+        },{
+          "name": "settlement_symbol",
+          "type": "symbol"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "logsalestart",
+      "base": "",
+      "fields": [{
+          "name": "sale_id",
+          "type": "uint64"
+        },{
+          "name": "offer_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "marketplaces_s",
+      "base": "",
+      "fields": [{
+          "name": "marketplace_name",
+          "type": "name"
+        },{
+          "name": "creator",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "payauctram",
+      "base": "",
+      "fields": [{
+          "name": "payer",
+          "type": "name"
+        },{
+          "name": "auction_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "paybuyoram",
+      "base": "",
+      "fields": [{
+          "name": "payer",
+          "type": "name"
+        },{
+          "name": "buyoffer_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "paysaleram",
+      "base": "",
+      "fields": [{
+          "name": "payer",
+          "type": "name"
+        },{
+          "name": "sale_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "purchasesale",
+      "base": "",
+      "fields": [{
+          "name": "buyer",
+          "type": "name"
+        },{
+          "name": "sale_id",
+          "type": "uint64"
+        },{
+          "name": "intended_delphi_median",
+          "type": "uint64"
+        },{
+          "name": "taker_marketplace",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "regmarket",
+      "base": "",
+      "fields": [{
+          "name": "creator",
+          "type": "name"
+        },{
+          "name": "marketplace_name",
+          "type": "name"
+        }
+      ]
+    },{
+      "name": "sales_s",
+      "base": "",
+      "fields": [{
+          "name": "sale_id",
+          "type": "uint64"
+        },{
+          "name": "seller",
+          "type": "name"
+        },{
+          "name": "asset_ids",
+          "type": "uint64[]"
+        },{
+          "name": "offer_id",
+          "type": "int64"
+        },{
+          "name": "listing_price",
+          "type": "asset"
+        },{
+          "name": "settlement_symbol",
+          "type": "symbol"
+        },{
+          "name": "maker_marketplace",
+          "type": "name"
+        },{
+          "name": "collection_name",
+          "type": "name"
+        },{
+          "name": "collection_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "setmarketfee",
+      "base": "",
+      "fields": [{
+          "name": "maker_market_fee",
+          "type": "float64"
+        },{
+          "name": "taker_market_fee",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "setminbidinc",
+      "base": "",
+      "fields": [{
+          "name": "minimum_bid_increase",
+          "type": "float64"
+        }
+      ]
+    },{
+      "name": "setversion",
+      "base": "",
+      "fields": [{
+          "name": "new_version",
+          "type": "string"
+        }
+      ]
+    },{
+      "name": "stopbonusfee",
+      "base": "",
+      "fields": [{
+          "name": "bonusfee_id",
+          "type": "uint64"
+        }
+      ]
+    },{
+      "name": "withdraw",
+      "base": "",
+      "fields": [{
+          "name": "owner",
+          "type": "name"
+        },{
+          "name": "token_to_withdraw",
+          "type": "asset"
+        }
+      ]
+    }
+  ],
+  "actions": [{
+      "name": "acceptbuyo",
+      "type": "acceptbuyo",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Accepts a buyoffer\nsummary: 'The buyoffer {{nowrap buyoffer_id}} is accepted'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe buyoffer with the id {{buyoffer_id}} is accepted by the recipient of the buyoffer.\n\nIf the asset ids of the buyoffer differ from {{expected_asset_ids}}, the transaction fails.\n\nIf the price of the buyoffer differs from {{expected_price}}, the transaction fails.\n\n{{#if taker_marketplace}}The marketplace with the name {{taker_marketplace}} facilitates this buyoffer acceptance.\n{{else}}The default marketplace facilitates this buyoffer acceptance.\n{{/if}}\n\nThe recipient needs to have previously created an AtomicAssets trade offer, offerring the assets of the buyoffer to the AtomicMarket account without asking for anything in return.\n\nThe AtomicAssets trade offer is accepted and the assets of the buyoffer are forwarded to the sender of the buyoffer.\n\nThe marketplaces facilitating the buyoffer creation and the acceptance, the author of the collection that the traded assets belong to, and the recipient of the buyoffer each get their share of the offered price added to their balances.\n\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the recipient of the buyoffer.\n</div>"
+    },{
+      "name": "addafeectr",
+      "type": "addafeectr",
+      "ricardian_contract": ""
+    },{
+      "name": "addbonusfee",
+      "type": "addbonusfee",
+      "ricardian_contract": ""
+    },{
+      "name": "addconftoken",
+      "type": "addconftoken",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Add token to supported list\nsummary: 'Adds a to the supported tokens list in the config'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n<b>Description:</b>\n<div class=\"description\">\nThe token with the symbol {{token_symbol}} from the token contract {{token_contract}} is added to the supported_tokens list.\n\nThis means this token can then be deposited and used for sales and auctions.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "adddelphi",
+      "type": "adddelphi",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Add a delphi symbol pair\nsummary: 'Adds a pair to the supported symbol pairs list in the config'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n<b>Description:</b>\n<div class=\"description\">\nA new symbol pair is added to the config.\n\nIt allows users to list an asset for sale with a listing price specified in {{listing_symbol}} which will be paid (settled) in {{settlement_symbol}}, which belongs to a supported token.\n\nThe exchange rate is calculated using the {{delphi_pair_name}} delphioracle pair.\n\n{{#if invert_delphi_pair}}The delphioracle price data will be inverted.\n{{/if}}\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "announceauct",
+      "type": "announceauct",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Announce an auction\nsummary: '{{nowrap seller}} announces an auction of one or multiple assets'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{seller}} announces an auction for the assets with the following IDs, which all have to belong to the same AtomicAssets collection:\n{{#each asset_ids}}\n    - {{this}}\n{{/each}}\n\nFor this auction to become active, {{seller}} has to transfer the aforementioned assets to the AtomicMarket account with the memo \"auction\".\n\nThe starting bid for this auction will be {{starting_bid}} and the auction will run for a minimum of {{duration}} seconds, starting from the time of announcement.\n\n{{#if maker_marketplace}}The marketplace with the name {{maker_marketplace}} facilitates this auction creation.\n{{else}}The default marketplace facilitates this auction creation.\n{{/if}}\n\nIf the auciton is successful, the marketplace facilitating the creation of the auction and the marketplace facilitating the final bid on the auction each receive a share of the final bid.\n\nIf the auciton is successful, the author of the collection that the listed assets belong to receives a share of the sale final bid.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{seller}}.\n</div>"
+    },{
+      "name": "announcesale",
+      "type": "announcesale",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Announce a sale\nsummary: '{{nowrap seller}} announces a sale of one or multiple assets'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{seller}} announces a sale for the assets with the following IDs, which all have to belong to the same AtomicAssets collection:\n{{#each asset_ids}}\n    - {{this}}\n{{/each}}\n\nFor this sale to become active, {{seller}} has to create an AtomicAssets trade offer in which he offers the aforementioned assets to the AtomicMarket account with the memo \"sale\".\n\nThe assets will be listed for the price of {{listing_price}} which will be settled in {{symbol_to_symbol_code settlement_symbol}}.\n\n{{#if maker_marketplace}}The marketplace with the name {{maker_marketplace}} facilitates this listing.\n{{else}}The default marketplace facilitates this listing.\n{{/if}}\n\nIf the sale is purchased, the marketplace facilitating the listing of the sale and the marketplace facilitating the purchase of the sale each receive a share of the sale price.\n\nIf the sale is purchased, the author of the collection that the listed assets belong to receives a share of the sale price.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{seller}}.\n</div>"
+    },{
+      "name": "assertauct",
+      "type": "assertauct",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Asserts auction details\nsummary: 'The asset ids of the auction {{nowrap auction_id}} is asserted'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nAsserts whether the auction with the id {{auction_id}} is for the asset ids {{asset_ids_to_assert}}\nIf it is not, the transaction fails. Otherwise, nothing happens.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\n</div>"
+    },{
+      "name": "assertsale",
+      "type": "assertsale",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Asserts sale details\nsummary: 'The asset ids and price of the sale {{nowrap sale_id}} is asserted'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nAsserts whether the sale with the id {{sale_id}} is for the asset ids {{asset_ids_to_assert}}, whether the listing price is {{listing_price_to_assert}} and whether the settlement symbol is {{settlement_symbol_to_assert}}\nIf any of these are not true, the transaction fails. Otherwise, nothing happens.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\n</div>"
+    },{
+      "name": "auctclaimbuy",
+      "type": "auctclaimbuy",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Claim an auction as the buyer\nsummary: 'The highest bidder of the finished auction with the ID {{nowrap auction_id}} claims the assets won'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe winner (highest bidder) of the auction with the ID {{auction_id}} claims the assets won in the auction. The auction must be finished.\n\nThe assets won in the auction are transferred to the auction's winner.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the winner of the auction with the ID {{auction_id}}.\n</div>"
+    },{
+      "name": "auctclaimsel",
+      "type": "auctclaimsel",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Claim an auction as the seller\nsummary: 'The seller of the finished auction with the ID {{nowrap auction_id}} claims the final bid'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe seller of the auction with the ID {{auction_id}} claims the assets won in the auction. The auction must be finished.\n\nThe marketplaces facilitating the auction creation and the final bid, the author of the collection that the auctioned assets belong to, and the seller each get their share of the final bid added to their balances.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the seller of the auction with the ID {{auction_id}}.\n</div>"
+    },{
+      "name": "auctionbid",
+      "type": "auctionbid",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Place a bid on an auction\nsummary: '{{nowrap bidder}} bids {{nowrap bid}} on the auction with the ID {{nowrap sale_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{bidder}} places a bid of {{bid}} on the auction with the ID {{auction_id}}.\n\nIf the auction does not have any previous bids, the placed bid must be at least as high as the specified minimum bid of the auction.\n\nIf the auction does have a previous bid, the minimum relative increase of the bid is specified in the config table in the field minimum_bid_increase.\n\nThe price of the sale will be deducted from {{buyer}}'s balance.\n\nIf the auction has a previous bid, the previous bidder is refunded their bid into their balance.\n\n{{#if taker_marketplace}}The marketplace with the name {{taker_marketplace}} facilitates this bid.\n{{else}}The default marketplace facilitates this bid.\n{{/if}}\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{bidder}}.\n</div>"
+    },{
+      "name": "cancelauct",
+      "type": "cancelauct",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Cancel an auction\nsummary: 'The auction with the ID {{nowrap auction_id}} is cancelled'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe auction with the ID {{auction_id}} is cancelled. The auction must not have any bids yet, otherwise it can't be cancelled.\n\nIf the seller of this auction has already transferred the assets for this auction to the AtomicMarket account, the assets are transferred back.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the seller of the auction with the ID {{sale_id}}.\n</div>"
+    },{
+      "name": "cancelbuyo",
+      "type": "cancelbuyo",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Cancels a buyoffer\nsummary: 'The buyoffer {{nowrap buyoffer_id}} is cancelled'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe buyoffer with the id {{buyoffer_id}} is cancelled.\n\nThe price of the buyoffer is added to the balance of the buyoffer's sender.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the sender of the buyoffer.\n</div>"
+    },{
+      "name": "cancelsale",
+      "type": "cancelsale",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Cancel a sale\nsummary: 'The sale with the ID {{nowrap sale_id}} is cancelled'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe sale with the ID {{sale_id}} is cancelled.\n\nIf the seller of this sale has created an AtomicAssets trade offer, offering the assets for this sale to the AtomicMarket account, this trade offer will be declined.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the seller of the sale with the ID {{sale_id}}.\n</div>"
+    },{
+      "name": "convcounters",
+      "type": "convcounters",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Converts config counters\nsummary: 'Converts deprecated config counters into using the counters table'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe deprecated (since version 1.3.0) sale_counter and auction_counter in the config singleton are added to the counters table.\n\nThe counter values in the config singleton are set to 0.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "createbuyo",
+      "type": "createbuyo",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Create a buyoffer\nsummary: '{{nowrap sender}} creates a buyoffer for {{nowrap recipient}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{sender}} creates a buyoffer, offering {{price}} for the assets with the following ids, owned by {{recipient}}:\n{{#each asset_ids}}\n    - {{this}}\n{{/each}}\n\nThe price is deducted from {{sender}}'s balance.\n\n{{recipient}} may accept this buyoffer, exchanging the previously mentioned assets for the specified price (excluding fees).\n\n{{#if maker_marketplace}}The marketplace with the name {{maker_marketplace}} facilitates this buyoffer creation.\n{{else}}The default marketplace facilitates this buyoffer creation.\n{{/if}}\n\n{{#if memo}}There is a memo attached to the buyoffer stating:\n    {{memo}}\n{{else}}No memo is attached to the buyoffer.\n{{/if}}\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{sender}}.\n</div>"
+    },{
+      "name": "declinebuyo",
+      "type": "declinebuyo",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Declines a buyoffer\nsummary: 'The buyoffer {{nowrap buyoffer_id}} is declined'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nThe buyoffer with the id {{buyoffer_id}} is declined by the recipient of the buyoffer.\n\nThe price of the buyoffer is added to the balance of the buyoffer's sender.\n\n{{#if decline_memo}}There is a memo attached to the decline stating:\n    {{decline_memo}}\n{{else}}No memo is attached to the decline.\n{{/if}}\n\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of the recipient of the buyoffer.\n</div>"
+    },{
+      "name": "delbonusfee",
+      "type": "delbonusfee",
+      "ricardian_contract": ""
+    },{
+      "name": "init",
+      "type": "init",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Initialize config table\nsummary: 'Initialize the table \"config\" if it has not been initialized before'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\nInitialize the table \"config\" if it has not been initialized before. If it has been initialized before, nothing will happen.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "logauctstart",
+      "type": "logauctstart",
+      "ricardian_contract": ""
+    },{
+      "name": "lognewauct",
+      "type": "lognewauct",
+      "ricardian_contract": ""
+    },{
+      "name": "lognewbuyo",
+      "type": "lognewbuyo",
+      "ricardian_contract": ""
+    },{
+      "name": "lognewsale",
+      "type": "lognewsale",
+      "ricardian_contract": ""
+    },{
+      "name": "logsalestart",
+      "type": "logsalestart",
+      "ricardian_contract": ""
+    },{
+      "name": "payauctram",
+      "type": "payauctram",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Pay for the RAM of an auction \nsummary: '{{nowrap payer}} pays for the RAM of the auction with the ID {{nowrap auction_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{payer}} pays for the RAM associated with the table entry of the auction with the ID {{auction_id}}. The content of the table entry does not change.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{payer}}.\n</div>"
+    },{
+      "name": "paybuyoram",
+      "type": "paybuyoram",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Pay for the RAM of a buyoffer \nsummary: '{{nowrap payer}} pays for the RAM of the buyoffer with the ID {{nowrap buyoffer_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{payer}} pays for the RAM associated with the table entry of the buyoffer with the ID {{buyoffer_id}}. The content of the table entry does not change.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{payer}}.\n</div>"
+    },{
+      "name": "paysaleram",
+      "type": "paysaleram",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Pay for the RAM of a sale \nsummary: '{{nowrap payer}} pays for the RAM of the sale with the ID {{nowrap sale_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{payer}} pays for the RAM associated with the table entry of the sale with the ID {{sale_id}}. The content of the table entry does not change.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{payer}}.\n</div>"
+    },{
+      "name": "purchasesale",
+      "type": "purchasesale",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Purchase a sale\nsummary: '{{nowrap buyer}} purchases the sale with the ID {{nowrap sale_id}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{buyer}} purchases the sale with the ID {{sale_id}}.\n\nIf the sale's listing price uses a different symbol than the sale's settlement symbol, the following delphioracle median price is used to calculate the exchange rate: {{intended_delphi_median}}.\n\nThis delphioracle median price must have been reported to the delphioracle and must still be present in the delphioracle's datapoints table for the relevant delphi pair.\n\n{{buyer}} will be transferred the assets of the sale.\n\nThe price of the sale will be deducted from {{buyer}}'s balance.\n\nThe marketplaces facilitating the sale listing and the purchase, the author of the collection that the sold assets belong to, and the seller each get their share of the sale price added to their balances.\n\n{{#if taker_marketplace}}The marketplace with the name {{taker_marketplace}} facilitates this purchase.\n{{else}}The default marketplace facilitates this purchase.\n{{/if}}\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{buyer}}.\n</div>"
+    },{
+      "name": "regmarket",
+      "type": "regmarket",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Register a new market\nsummary: '{{nowrap creator}} creates a new marketplace with the name {{nowrap marketplace_name}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{nowrap creator}} creates a new marketplace with the name {{nowrap marketplace_name}}.\n\nThis marketplace name can then be used in the \"announcesale\", \"announceauct\", \"purchasesale\", \"auctionbid\" actions.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{creator}}.\n</div>"
+    },{
+      "name": "setmarketfee",
+      "type": "setmarketfee",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Set the market fees\nsummary: 'Sets the market fees that are paid out to the marketplaces facilitating sales and auctions'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n<b>Description:</b>\n<div class=\"description\">\nThe share that the maker market place will receive of successful sales and auctions is set to {{maker_market_fee}}.\n\nThe share that the taker market place will receive of successful sales and auctions is set to {{taker_market_fee}}.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "setminbidinc",
+      "type": "setminbidinc",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Set minimum auction bid increase\nsummary: 'Sets the minimum auction bid increase to {{nowrap minimum_bid_increase}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n<b>Description:</b>\n<div class=\"description\">\nThe minimum bid increase for auctions to {{minimum_bid_increase}}.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "setversion",
+      "type": "setversion",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Set config version\nsummary: 'Sets the version in the config table to {{nowrap new_version}}'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n<b>Description:</b>\n<div class=\"description\">\nThe version in the config table is set to {{new_version}}.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{$action.account}}.\n</div>"
+    },{
+      "name": "stopbonusfee",
+      "type": "stopbonusfee",
+      "ricardian_contract": ""
+    },{
+      "name": "withdraw",
+      "type": "withdraw",
+      "ricardian_contract": "---\nspec_version: \"0.2.0\"\ntitle: Withdraw fungible tokens\nsummary: '{{nowrap owner}} withdraws {{token_to_withdraw}} from his balance'\nicon: https://atomicassets.io/image/logo256.png#108AEE3530F4EB368A4B0C28800894CFBABF46534F48345BF6453090554C52D5\n---\n\n<b>Description:</b>\n<div class=\"description\">\n{{owner}} withdraws {{token_to_withdraw}}.\nThe tokens will be transferred back to {{owner}} and will be deducted from {{owner}}'s balance.\n</div>\n\n<b>Clauses:</b>\n<div class=\"clauses\">\nThis action may only be called with the permission of {{owner}}.\n</div>"
+    }
+  ],
+  "tables": [{
+      "name": "auctions",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "auctions_s"
+    },{
+      "name": "balances",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "balances_s"
+    },{
+      "name": "bonusfees",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "bonusfees_s"
+    },{
+      "name": "buyoffers",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "buyoffers_s"
+    },{
+      "name": "config",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "config_s"
+    },{
+      "name": "counters",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "counters_s"
+    },{
+      "name": "marketplaces",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "marketplaces_s"
+    },{
+      "name": "sales",
+      "index_type": "i64",
+      "key_names": [],
+      "key_types": [],
+      "type": "sales_s"
+    }
+  ],
+  "ricardian_clauses": [],
+  "error_messages": [],
+  "abi_extensions": [],
+  "variants": [],
+  "action_results": [],
+  "kv_tables": {}
 }
